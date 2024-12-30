@@ -1,209 +1,279 @@
-// import { ArrowForwardIcon } from "@mui/npm /ArrowForward";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import './slider.css';
-import { useTheme } from "@emotion/react";
-// import img1 from "src\componets\imgCard\banner-15.jpg";
-// import img2 from "src\componets\imgCard\banner-25.jpg";
-// import img3 from "../imgCard/banner-15.jpg";
+import {
+    Box,
+    Button,
+    Container,
+    Link,
+    Stack,
+    Typography,
+    useTheme,
+  } from "@mui/material";
+  
+  import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const Hero = () => {
-    const theme = useTheme()
+  
+  import { Swiper, SwiperSlide } from "swiper/react";
+//   import { Pagination } from "swiper";
+  import { Pagination } from 'swiper/modules';
+
+  import imag1 from "./banner-15.jpg";
+  import imag2 from "./banner-25.jpg";
+  import imag3 from "./banner-17.jpg";
+  import imag4 from "./banner-16.jpg";
+  // Import Swiper styles
+  import 'swiper/css';
+ import 'swiper/css/pagination';
+ import './slider.css';
+  // import "../Home/CardHome.css";
+   import IconSection from "./IconSection";
+//   import { useSelector } from "react-redux";
+  
+  const mySlider = [
+    { text: "MEN", link: imag1 },
+    { text: "WOMEN", link: imag2 },
+  ];
+  
+  const Hero = () => {
+    const theme = useTheme();
     return (
-        <Container sx={{ mt: 2.5, display: "flex", alignItems: "center", gap: 2 }}>
-            <Swiper
-                pagination={{
-                    dynamicBullets: true,
+      <Container>
+        <Box
+          sx={{
+            pt: 2,
+            mt: 2.5,
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <Swiper
+            loop={true}
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper "
+          >
+            {mySlider.map((item, index) => {
+              return (
+                <SwiperSlide key={index} className="parent-slider ">
+                  <img src={item.link} alt="sss" />
+                  <Box
+                    sx={{
+                      top: "14%",
+                      [theme.breakpoints.up("sm")]: {
+                        position: "absolute",
+                        left: "10%",
+                        textAlign: "left",
+                      },
+  
+                      [theme.breakpoints.down("sm")]: {
+                        pt: 4,
+                        pb: 6,
+                      },
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        color: "#222",
+                      }}
+                      variant="h5"
+                    >
+                      LIFESTYLE COLLECTION
+                    </Typography>
+  
+                    <Typography
+                      sx={{
+                        color: "#222",
+                        fontWeight: 500,
+                        my: 1,
+                      }}
+                      variant="h3"
+                    >
+                      {item.text}
+                    </Typography>
+  
+                    <Stack
+                      sx={{
+                        justifyContent: { xs: "center", sm: "left" },
+                      }}
+                      direction={"row"}
+                      alignItems={"center"}
+                    >
+                      <Typography color={"#333"} mr={1} variant="h4">
+                        SALE UP TO
+                      </Typography>
+                      <Typography color={"#D23F57"} variant="h4">
+                        30% OFF
+                      </Typography>
+                    </Stack>
+                    <Typography
+                      sx={{
+                        color: "#000",
+                        fontWeight: 300,
+                        my: 1,
+                      }}
+                      variant="body1"
+                    >
+                      Get Free Shipping on orders over $99.00
+                    </Typography>
+  
+                    <Button
+                      sx={{
+                        px: 5,
+                        py: 1,
+                        mt: 2,
+                        backgroundColor: "#222",
+                        boxShadow: "0px 4px 16px rgba(43, 52, 69, 0.1)",
+                        color: "#fff",
+                        borderRadius: "1px",
+  
+                        "&:hover": {
+                          bgcolor: "#151515",
+                          boxShadow: "0px 4px 16px rgba(43, 52, 69, 0.1)",
+                        },
+                      }}
+                      variant="contained"
+                    >
+                      shop now
+                    </Button>
+                  </Box>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+  
+          <Box
+            sx={{
+              display: { xs: "none", md: "block", minWidth: "26.6%" },
+            }}
+          >
+            <Box sx={{ position: "relative", mb: 1.1 }}>
+              <img width={"100%"} src={imag4} alt="" />
+  
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  left: 31,
                 }}
-                modules={[Pagination]}
-                className="mySwiper"
-            >
-                <SwiperSlide className="parent-slider">
-                    <img src="src\componets\Hero\banner-15.jpg" alt="" />
-                    <Box sx={{ position: "absolute", left: "10%", textAlign: "left" }}>
-                        <Typography sx={{ color: "#222" }}
-                            variant="h5">
-                            LIFESTYLE COLLBCTION
-
-                        </Typography>
-                        <Typography sx={{
-                            color: "#222",
-                            fontWeight: 400,
-                            my: 1,
-                        }}
-                            variant="h3">
-                            MEN
-                        </Typography>
-
-                        <Stack sx={{ justifyContent: "center", }}
-                            direction={"row"}
-                            alignItems={"center"}>
-                            <Typography color="#333" mr={1} variant="h4">
-                                SALE UP TO
-                            </Typography>
-                            <Typography color="#D23F57" variant="h4">
-                                30% OFF
-                            </Typography>
-                        </Stack>
-                        <Typography sx={{
-                            color: "#000",
-                            fontWeight: 300,
-                            my: 1,
-                        }}
-                            variant="body1">
-                            Get Free Shipping on order over $99.00
-                        </Typography>
-                        <Button
-                            sx={{
-                                px: 5, py: 1, mt: 2, backgroundColor: "#222",
-                                boxShadow: "0px 4px 16 px rgbe(43,52,69,0.1)",
-                                color: "#fff",
-                                borderRadius: "1px",
-                                "&:hover": {
-                                    bgcolor: "#151515",
-                                    boxShadow: "0px 4px 16 px rgbe(43,52,69,0.1)",
-                                }
-                            }}
-                            variant="contained"
-                        >
-                            SHOP NOW
-                        </Button>
-
-                    </Box>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="src\componets\Hero\banner-25.jpg" alt="" />
-                </SwiperSlide>
-
-
-            </Swiper>
-
-
-            <Box sx={{ display: { xs: "none", md: "block", minWidth: "26.6%" } }}>
-                <Box calssName="border" sx={{ position: "relative" }}>
-                    <img width={"100%"} src="src\componets\imgCard\banner-17.jpg" />
-
-                    <Stack sx={{
-                        position: "absolute", top: "50%",
-                        transform: "translateY(-50%)", left: "31px"
-                    }}>
-                        <Typography
-                            variant="caption"
-                            sx={{
-                                color: "#283445",
-                                fontSize: "18px",
-                            }}
-                        >
-                            NEW ARRIVALS
-                        </Typography>
-
-                        <Typography
-                            variant="h5"
-                            sx={{
-                                color: "#283445",
-                                lineHeight: "16px",
-                                mt: 1,
-                            }}
-                        >
-                            SUMMER
-                        </Typography>
-
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                color: "#283445",
-
-                            }}
-                        >
-                            SALE 20% OFF
-                        </Typography>
-                        <Link sx={{
-                            color: "#283445",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "5px",
-                            Transition: "0.2s",
-                            "&:hover": {
-                                color: "#D23F57",
-                            },
-                        }}
-                            href="#"
-                            underline="none"
-                        >
-                            shop now
-                           {/* <ArrowForwardIcon sx={{ fontSize: "13px" }} /> */}
-                        </Link>
-
-                    </Stack>
-
-
-                </Box>
-                <Box sx={{ position: "relative" }}>
-                    <img width={"100%"} src=".\banner-16.jpg" />
-
-                    <Stack sx={{
-                        position: "absolute", top: "50%",
-                        transform: "translateY(-50%)", left: "31px"
-                    }}>
-                        <Typography
-                            variant="caption"
-                            sx={{
-                                color: "#283445",
-                                fontSize: "18px",
-                            }}
-                        >
-                            GAMING 4K
-                        </Typography>
-
-                        <Typography
-                            variant="h5"
-                            sx={{
-                                color: "#283445",
-                                lineHeight: "16px",
-                                mt: 1,
-                            }}
-                        >
-                            DESKTOPS &
-                        </Typography>
-
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                color: "#283445",
-
-                            }}
-                        >
-                            LAPTOPS
-                        </Typography>
-                        <Link sx={{
-                            color: "#283445",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "5px",
-                            Transition: "0.2s",
-                            "&:hover": {
-                                color: "#D23F57",
-                            },
-                        }}
-                            href="#"
-                            underline="none"
-                        >
-                            shop now
-                            {/* <ArrowForwardIcon sx={{ fontSize: "13px" }} /> */}
-                        </Link>
-
-                    </Stack>
-
-                </Box>
+              >
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "#2B3445",
+                    fontSize: "18px",
+                  }}
+                >
+                  NEW ARRIVALS
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#2B3445",
+                    lineHeight: "16px",
+                    mt: 1,
+                  }}
+                >
+                  SUMMER
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#2B3445",
+                  }}
+                >
+                  SALE 20% OFF
+                </Typography>
+  
+                <Link
+                  sx={{
+                    color: "#2B3445",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    transition: "0.2s",
+  
+                    "&:hover": {
+                      color: "#D23F57",
+                    },
+                  }}
+                  href="#"
+                  underline="none"
+                >
+                  shop now
+                  <ArrowForwardIcon sx={{ fontSize: "13px" }} />
+                </Link>
+              </Stack>
             </Box>
-
-        </Container>
+  
+            <Box sx={{ position: "relative" }}>
+              <img width={"100%"} src={imag3} alt="" />
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  left: 31,
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "#2B3445",
+                    fontSize: "18px",
+                    fontWeight: 300,
+                  }}
+                >
+                  GAMING 4K
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#2B3445",
+                    lineHeight: "16px",
+                    mt: 1,
+                  }}
+                >
+                  DESKTOPS &
+                </Typography>
+  
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#2B3445",
+                  }}
+                >
+                  LAPTOPS
+                </Typography>
+  
+                <Link
+                  sx={{
+                    color: "#2B3445",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    transition: "0.2s",
+  
+                    "&:hover": {
+                      color: "#D23F57",
+                    },
+                  }}
+                  href="#"
+                  underline="none"
+                >
+                  shop now
+                  <ArrowForwardIcon sx={{ fontSize: "13px" }} />
+                </Link>
+              </Stack>
+            </Box>
+          </Box>
+        </Box>
+  
+         <IconSection /> 
+      </Container>
     );
-}
-
-export default Hero;
+  };
+  
+  export default Hero;
+  

@@ -1,14 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./componets/Home/Home";
+ import {Box , CassBaseline, ThemeProvider} from "@mui/material"
+// import {colorModeContext, useMode} from "./Theme"
 import Login from "./componets/Login";
 import Register from "./componets/Register";
 import Header1 from "./componets/Home/Header1";
 import Header2 from "./componets/Home/Header2";
 import Header3 from "./componets/Home/Header3";
 import Footer from "./componets/Home/Footer";
-import ProductPage from "./componets/CardHome/ProductPage";
 import Hero from "./componets/Hero/Hero";
+import Dis from "./componets/Home/Dis";
+import ScrollToTop from "./componets/Scroll/ScrollToTop";
+import Pay from "./componets/Pay";
+import Support from "./componets/Support";
+
 
 
 
@@ -16,6 +21,7 @@ import Hero from "./componets/Hero/Hero";
 
 function App() {
   return (
+
     
     <div className="App">
       <BrowserRouter>
@@ -27,20 +33,30 @@ function App() {
                 <Header2 />
                 <Header3 />
                 <Hero />
-                <ProductPage />
+                <Pay/>
+                <Support />
+                <Dis />
                 <Footer />
+                <ScrollToTop/>
+
               </>
+
             }
             path="/"
           />
-
           <Route element={<Login />} path="/Login" />
           <Route element={<Register />} path="/Register" />
           <Route element={<Footer />} path="/" />
         </Routes>
       </BrowserRouter>
     </div>
+
+      
   );
 }
 
 export default App;
+
+
+
+
